@@ -36,7 +36,7 @@ typedef struct attr_union {
 	double d;
 	float f;
 	int i;
-	long l;
+	BIG_INT l;
 	void *p;
         attr_opaque o;
     }u;
@@ -531,13 +531,13 @@ add_attr(attr_list list, atom_t attr_id, attr_value_type val_type, attr_value va
     attr_union value;
     switch(val_type) {
     case Attr_Int8:
-	if (sizeof(intptr_t) == 8) {
-	    value.u.l = (intptr_t) val;
+	if (sizeof(BIG_INT) == 8) {
+	    value.u.l = (long) (BIG_INT) val;
 	}
     case Attr_Int4:
     case Attr_Atom:
       if (sizeof(int) == 4) {
-	  value.u.i = (intptr_t)val;
+	  value.u.i = (int) (BIG_INT)val;
       }
       break;
     case Attr_Float16:
@@ -590,7 +590,7 @@ add_attr(attr_list list, atom_t attr_id, attr_value_type val_type, attr_value va
 	}
 	
 	list->l.list.iattrs->iattr[i+1].attr_id = attr_id;
-	list->l.list.iattrs->iattr[i+1].value = (int4) (intptr_t) val;
+	list->l.list.iattrs->iattr[i+1].value = (int4) (BIG_INT) val;
 	list->l.list.iattrs->int_attr_count++;
     } else {
 	int count = list->l.list.iattrs->other_attr_count;
@@ -668,13 +668,13 @@ replace_attr(attr_list list, atom_t attr_id, attr_value_type val_type, attr_valu
     assert(list->list_of_lists == 0);
     switch(val_type) {
     case Attr_Int8:
-        if (sizeof(intptr_t) == 8) {
-            value.u.l = (intptr_t) val;
+        if (sizeof(BIG_INT) == 8) {
+            value.u.l = (long) (BIG_INT) val;
         }
     case Attr_Int4:
     case Attr_Atom:
         if (sizeof(int) == 4) {
-            value.u.i = (intptr_t)val;
+            value.u.i = (long) (BIG_INT)val;
         }
         break;
     case Attr_Float16:

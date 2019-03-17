@@ -17,3 +17,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
+#if SIZEOF_LONG == SIZEOF_POINTER
+#define BIG_INT long
+#elif SIZEOF_LONG_LONG == SIZEOF_POINTER
+#define BIG_INT long long
+#elif SIZEOF_INTPTR_T == SIZEOF_PTR
+#define BIG_INT intptr_t
+#else
+whoops
+#endif

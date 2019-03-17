@@ -122,7 +122,7 @@ char *msg;
 			);
 		}
 	    }
-	    entry = Tcl_FindHashEntry(&as->value_hash_table, (char *) (intptr_t)atom);
+	    entry = Tcl_FindHashEntry(&as->value_hash_table, (char *) (BIG_INT)atom);
 	    if (entry != NULL) {
 		send_get_atom_msg_ptr atom_entry =
 		(send_get_atom_msg_ptr) Tcl_GetHashValue(entry);
@@ -178,7 +178,7 @@ send_get_atom_msg_ptr msg;
     Tcl_SetHashValue(entry, stored);
     /* enter into value hash table */
     entry = Tcl_CreateHashEntry(&as->value_hash_table,
-				(char *) (intptr_t) stored->atom, &new);
+				(char *) (BIG_INT) stored->atom, &new);
     if (!new) {
 	printf("Serious internal error in atom cache.  Duplicate value hash entry.\n");
 	exit(1);
@@ -216,7 +216,7 @@ atom_t atom;
 	    return;
 	}
     }
-    entry2 = Tcl_FindHashEntry(&as->value_hash_table, (char *) (intptr_t) atom);
+    entry2 = Tcl_FindHashEntry(&as->value_hash_table, (char *) (BIG_INT) atom);
    if (entry2 != NULL) {
 	send_get_atom_msg_ptr atom_entry =
 	(send_get_atom_msg_ptr) Tcl_GetHashValue(entry2);
@@ -417,7 +417,7 @@ atom_t atom;
     int numbytes;
     char buf[MAXDATASIZE];
 
-    entry = Tcl_FindHashEntry(&as->value_hash_table, (char *) (intptr_t) atom);
+    entry = Tcl_FindHashEntry(&as->value_hash_table, (char *) (BIG_INT) atom);
 
     if (entry == NULL) {
 	sprintf(&buf[1], "N%d", atom);

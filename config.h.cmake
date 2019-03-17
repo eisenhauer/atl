@@ -56,3 +56,16 @@
 
 /* The number of bytes in type short */
 #cmakedefine SIZEOF_SHORT @SIZEOF_SHORT@
+
+/* The number of bytes in type int */
+#cmakedefine SIZEOF_LONG @SIZEOF_LONG@
+
+/* The number of bytes in type int */
+#cmakedefine SIZEOF_LONG_LONG @SIZEOF_LONG_LONG@
+
+/* The number of bytes in type int */
+#cmakedefine SIZEOF_INTPTR_T @SIZEOF_INTPTR_T@
+
+/* The number of bytes in type pointer */
+#cmakedefine SIZEOF_POINTER @SIZEOF_POINTER@
+
