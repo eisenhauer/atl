@@ -1,6 +1,7 @@
 # Client maintainer: eisen@cc.gatech.edu
 
-set(CTEST_CMAKE_GENERATOR "Visual Studio 17 2022")
+# windows-2025 runner image ships Visual Studio 2026; needs CMake >= 4.2
+set(CTEST_CMAKE_GENERATOR "Visual Studio 18 2026")
 set(CTEST_CMAKE_GENERATOR_PLATFORM x64)
 set(CTEST_CMAKE_GENERATOR_TOOLSET ClangCL)
 
